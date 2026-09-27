@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missão Marte SOLID</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333; min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px 20px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        section { padding: 40px; border-bottom: 1px solid #eee; }
+        section h2 { color: #667eea; margin-bottom: 20px; font-size: 1.8em; }
+        .info-box { background: #f0f4ff; padding: 20px; margin: 20px; border-left: 4px solid #667eea; border-radius: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        table th { background: #667eea; color: white; padding: 12px; }
+        table td { padding: 12px; border-bottom: 1px solid #ddd; }
+        footer { background: #f5f5f5; padding: 30px 20px; text-align: center; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Missão Marte SOLID</h1>
+            <p>Refatoração de código Java aplicando os 5 princípios SOLID</p>
+        </header>
+        
+        <div class="info-box">
+            <strong>👤 Aluna:</strong> Rafaele Gomes<br>
+            <strong>🎓 Matrícula:</strong> 2618240<br>
+            <strong>📊 Dificuldade testada:</strong> MEDIO
+        </div>
+        
+        <section>
+            <h2>📋 Sobre o Projeto</h2>
+            <p>Refatoração do jogo Missão Marte aplicando os 5 princípios SOLID em Java.</p>
+            <p>Código original (~500 linhas) separado em 3 camadas: Model, Service e Repository.</p>
+        </section>
+        
+        <section>
+            <h2>✅ Princípios SOLID Aplicados</h2>
+            <table>
+                <tr><th>Princípio</th><th>Aplicado em</th><th>Benefício</th></tr>
+                <tr><td>SRP</td><td>GameService, GameRenderer, RankingService</td><td>Cada classe tem 1 responsabilidade</td></tr>
+                <tr><td>OCP</td><td>Interface Perigo, Passageiro</td><td>Fácil estender sem modificar</td></tr>
+                <tr><td>LSP</td><td>Asteroide, Inimigo implementam Perigo</td><td>Polimorfismo correto</td></tr>
+                <tr><td>ISP</td><td>Interfaces pequenas e focadas</td><td>Contrato claro</td></tr>
+                <tr><td>DIP</td><td>Injeção de dependência</td><td>Desacoplamento total</td></tr>
+            </table>
+        </section>
+        
+        <section>
+            <h2>🔗 Links</h2>
+            <p><a href="https://github.com/rafaellelavignee-lab/missao-marte-solid-Rafaele.git">Repositório GitHub</a></p>
+        </section>
+        
+        <footer>
+            <p>Missão Marte SOLID | Unifor | 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
