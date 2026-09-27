@@ -1,0 +1,102 @@
+@startuml diagrama-classes-model
+
+skinparam backgroundColor #FEFEFE
+skinparam classBackgroundColor #F0F0F0
+skinparam classBorderColor #333333
+
+interface Posicionavel {
+    + getX(): int
+    + getY(): int
+}
+
+interface Movel extends Posicionavel {
+    + mover(random, minX, maxX, minY, maxY): void
+}
+
+interface Perigo extends Posicionavel {
+    + colideCom(nave): boolean
+}
+
+enum Dificuldade {
+    FACIL
+    MEDIO
+    DIFICIL
+    + deString(s): Dificuldade
+}
+
+class Nave implements Posicionavel {
+    - id: String
+    - x: int
+    - y: int
+    - capacidade: int
+    - vidas: int
+    - passageiros: List
+    + Nave(id, capacidade)
+    + moverComLimites(direcao, minX, maxX, minY, maxY): void
+    + embarcar(p): boolean
+    + perderVida(): void
+}
+
+class Passageiro implements Posicionavel {
+    - nome: String
+    - tipo: String
+    - x: int
+    - y: int
+    + Passageiro(nome, tipo, x, y)
+    + getPontuacao(): int
+}
+
+class Professor extends Passageiro {
+    + Professor(nome, x, y)
+}
+
+class Engenheiro extends Passageiro {
+    + Engenheiro(nome, x, y)
+}
+
+class Astronauta extends Passageiro {
+    + Astronauta(nome, x, y)
+}
+
+class Asteroide implements Perigo {
+    - x: int
+    - y: int
+    + Asteroide(x, y)
+    + colideCom(nave): boolean
+}
+
+class Inimigo implements Perigo, Movel {
+    - x: int
+    - y: int
+    + Inimigo(x, y)
+    + colideCom(nave): boolean
+    + mover(random, minX, maxX, minY, maxY): void
+}
+
+class Missao {
+    - nave: Nave
+    - passageiros: List
+    - perigos: List
+    + Missao(nave)
+    + verificaColisao(): boolean
+    + embarcarPassageiroNaPosicao(): boolean
+    + todosEmbarcados(): boolean
+}
+
+class RankingEntry {
+    + name: String
+    + score: int
+    + dificuldade: Dificuldade
+    + passageirosColetados: int
+    + dataHora: String
+    + tempoJogo: long
+    + RankingEntry(...)
+}
+
+Missao o-- Nave
+Missao o-- Passageiro
+Missao o-- Perigo
+Nave o-- Passageiro
+RankingEntry --> Dificuldade
+
+@enduml
