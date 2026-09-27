@@ -3,60 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Missão Marte SOLID</title>
+    <title>Missão Marte SOLID - Rafaele</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333; min-height: 100vh; padding: 20px; }
-        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px 20px; text-align: center; }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        section { padding: 40px; border-bottom: 1px solid #eee; }
-        section h2 { color: #667eea; margin-bottom: 20px; font-size: 1.8em; }
-        .info-box { background: #f0f4ff; padding: 20px; margin: 20px; border-left: 4px solid #667eea; border-radius: 5px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table th { background: #667eea; color: white; padding: 12px; }
-        table td { padding: 12px; border-bottom: 1px solid #ddd; }
-        footer { background: #f5f5f5; padding: 30px 20px; text-align: center; color: #666; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #16213e;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        header {
+            text-align: center;
+            border-bottom: 3px solid #0f3460;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 { font-size: 2.2em; color: #e94560; margin-bottom: 5px; }
+        h2 { font-size: 1.8em; color: #e94560; margin-top: 25px; margin-bottom: 15px; }
+        h3 { font-size: 1.3em; color: #00d4ff; margin-top: 15px; margin-bottom: 10px; }
+        p { margin-bottom: 12px; }
+        .info {
+            background: #0f3460;
+            padding: 15px;
+            border-left: 4px solid #e94560;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .info strong { color: #00d4ff; }
+        code {
+            background: #0a1428;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #4ade80;
+        }
+        pre {
+            background: #0a1428;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 3px solid #00d4ff;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #4ade80;
+        }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; }
+        li { margin-bottom: 8px; }
+        .box {
+            background: #0f3460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #00d4ff;
+        }
+        .box-warning {
+            border-left-color: #ff9500;
+            background: rgba(255, 149, 0, 0.1);
+        }
+        .box-success {
+            border-left-color: #4ade80;
+            background: rgba(74, 222, 128, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        table th {
+            background: #0a1428;
+            color: #00d4ff;
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #00d4ff;
+        }
+        table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #0f3460;
+        }
+        table tr:hover {
+            background: #0f3460;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #0f3460;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #00d4ff;
+        }
+        .card h4 { color: #00d4ff; margin-bottom: 8px; }
+        .link {
+            color: #00d4ff;
+            text-decoration: none;
+            border-bottom: 2px solid #00d4ff;
+        }
+        .link:hover { color: #e94560; }
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #0f3460;
+            text-align: center;
+            font-size: 0.9em;
+            color: #999;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🚀 Missão Marte SOLID</h1>
-            <p>Refatoração de código Java aplicando os 5 princípios SOLID</p>
+            <p>Refatoração de um jogo em Java aplicando princípios SOLID</p>
         </header>
-        
-        <div class="info-box">
-            <strong>👤 Aluna:</strong> Rafaele Gomes<br>
-            <strong>🎓 Matrícula:</strong> 2618240<br>
-            <strong>📊 Dificuldade testada:</strong> MEDIO
+
+        <div class="info">
+            <strong>Aluna:</strong> Rafaele Gomes<br>
+            <strong>Matrícula:</strong> 2618240<br>
+            <strong>Disciplina:</strong> Projeto de Arquitetura de Sistemas<br>
+            <strong>Dificuldade testada:</strong> MEDIO
         </div>
+
+        <h2>O que é este projeto?</h2>
+        <p>
+            Peguei um jogo em Java que tinha tudo misturado em poucas classes (monolítico) e refatorei usando os princípios SOLID.
+            O código original funcionava bem, mas era meio bagunçado para manutenção.
+        </p>
+        <p>
+            Agora está organizado em 3 camadas bem definidas: Model, Service e Repository.
+        </p>
+
+        <h2>Princípios SOLID aplicados</h2>
+
+        <h3>Single Responsibility (SRP)</h3>
+        <div class="box">
+            <p>Cada classe tem uma única responsabilidade:</p>
+            <ul>
+                <li><strong>GameService:</strong> lógica do jogo</li>
+                <li><strong>GameRenderer:</strong> apenas renderiza o mapa</li>
+                <li><strong>RankingService:</strong> gerencia o ranking</li>
+                <li><strong>JsonRankingRepository:</strong> salva/carrega dados</li>
+            </ul>
+        </div>
+
+        <h3>Open/Closed (OCP)</h3>
+        <div class="box">
+            <p>Posso adicionar novos tipos sem quebrar o código existente:</p>
+            <pre>// Para criar novo passageiro:
+public class Medico extends Passageiro {
+    @Override
+    public int getPontuacao() {
+        return 25;
+    }
+}
+// Pronto! GameService continua funcionando</pre>
+        </div>
+
+        <h3>Liskov Substitution (LSP)</h3>
+        <div class="box">
+            <p>Subclasses podem ser usadas no lugar da classe base sem problemas:</p>
+            <ul>
+                <li>Asteroide e Inimigo funcionam igual como Perigo</li>
+                <li>Professor, Engenheiro, Astronauta funcionam igual como Passageiro</li>
+            </ul>
+        </div>
+
+        <h3>Interface Segregation (ISP)</h3>
+        <div class="box">
+            <p>Interfaces pequenas e focadas:</p>
+            <pre>Posicionavel (getX, getY)
+Movel extends Posicionavel (mover)
+Perigo extends Posicionavel (colideCom)</pre>
+        </div>
+
+        <h3>Dependency Inversion (DIP)</h3>
+        <div class="box">
+            <p>GameService depende de abstrações, não de implementações concretas:</p>
+            <pre>// Injeção de dependência
+GameService(GameRenderer renderer, 
+            RankingService rankingService)</pre>
+            <p>Isso permite trocar a implementação sem alterar GameService.</p>
+        </div>
+
+        <h2>Como compilar e executar</h2>
         
-        <section>
-            <h2>📋 Sobre o Projeto</h2>
-            <p>Refatoração do jogo Missão Marte aplicando os 5 princípios SOLID em Java.</p>
-            <p>Código original (~500 linhas) separado em 3 camadas: Model, Service e Repository.</p>
-        </section>
-        
-        <section>
-            <h2>✅ Princípios SOLID Aplicados</h2>
-            <table>
-                <tr><th>Princípio</th><th>Aplicado em</th><th>Benefício</th></tr>
-                <tr><td>SRP</td><td>GameService, GameRenderer, RankingService</td><td>Cada classe tem 1 responsabilidade</td></tr>
-                <tr><td>OCP</td><td>Interface Perigo, Passageiro</td><td>Fácil estender sem modificar</td></tr>
-                <tr><td>LSP</td><td>Asteroide, Inimigo implementam Perigo</td><td>Polimorfismo correto</td></tr>
-                <tr><td>ISP</td><td>Interfaces pequenas e focadas</td><td>Contrato claro</td></tr>
-                <tr><td>DIP</td><td>Injeção de dependência</td><td>Desacoplamento total</td></tr>
-            </table>
-        </section>
-        
-        <section>
-            <h2>🔗 Links</h2>
-            <p><a href="https://github.com/rafaellelavignee-lab/missao-marte-solid-Rafaele.git">Repositório GitHub</a></p>
-        </section>
-        
+        <h3>Código original:</h3>
+        <pre>cd solid-tutorial
+javac -d bin src/exercicio10/*.java
+java -cp bin exercicio10.Main</pre>
+
+        <h3>Código refatorado:</h3>
+        <pre>javac -d bin src/solidexercicio10/*.java src/solidexercicio10/service/*.java src/solidexercicio10/repository/*.java
+java -cp bin solidexercicio10.Main</pre>
+
+        <div class="box box-success">
+            ✓ Ambas as versões compilam e funcionam sem erros
+        </div>
+
+        <h2>Testes realizados</h2>
+        <table>
+            <tr>
+                <th>Teste</th>
+                <th>Resultado</th>
+            </tr>
+            <tr>
+                <td>Compilação original</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Compilação refatorada</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Iniciar nova missão</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Mover nave (WASD)</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Embarcar passageiros (E)</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Detectar colisões</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Finalizar missão (F)</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Ver ranking</td>
+                <td>✓ OK</td>
+            </tr>
+            <tr>
+                <td>Salvar em JSON</td>
+                <td>✓ OK</td>
+            </tr>
+        </table>
+
+        <h2>Dificuldades que enfrentei</h2>
+
+        <h3>1. Encoding BOM no PowerShell</h3>
+        <div class="box box-warning">
+            <p>Quando criava arquivos Java no PowerShell, aparecia o erro:</p>
+            <pre>error: illegal character: '\ufeff'</pre>
+            <p><strong>Solução:</strong> Usar -Encoding ASCII ao invés de UTF8</p>
+            <pre>Out-File -Encoding ASCII  # Correto!</pre>
+        </div>
+
+        <h3>2. Arquivos conflitantes</h3>
+        <div class="box box-warning">
+            <p>Tinha versões antigas das classes causando conflitos na compilação.</p>
+            <p><strong>Solução:</strong> Limpar a pasta solidexercicio10 e recriar do zero.</p>
+        </div>
+
+        <h3>3. PlantUML com caracteres especiais</h3>
+        <div class="box box-warning">
+            <p>Quando colocava caracteres especiais (✓, ❌, etc) no diagrama, queimava no PlantUML online.</p>
+            <p><strong>Solução:</strong> Usar apenas ASCII e deixar o diagrama simples.</p>
+        </div>
+
+        <h2>Decisões com as quais CONCORDO</h2>
+
+        <h3>1. Separação em 3 camadas (Model, Service, Repository)</h3>
+        <div class="box box-success">
+            <p>
+                <strong>Por quê:</strong> Deixa o código muito mais organizado. Cada parte tem um propósito claro.
+            </p>
+            <p>
+                <strong>Benefício:</strong> Quando preciso alterar como os dados são salvos (de JSON para banco de dados), 
+                só mexo na camada Repository. O resto do código não precisa mudar!
+            </p>
+        </div>
+
+        <h3>2. Usar interfaces para abstrair comportamentos</h3>
+        <div class="box box-success">
+            <p>
+                <strong>Por quê:</strong> Ao invés de trabalhar com classes específicas, trabalho com interfaces.
+            </p>
+            <p>
+                <strong>Benefício:</strong> Posso adicionar novos tipos (novo passageiro, novo perigo) sem mexer no GameService.
+                O código fica aberto para extensão, fechado para modificação.
+            </p>
+        </div>
+
+        <h3>3. Injeção de dependência</h3>
+        <div class="box box-success">
+            <p>
+                <strong>Por quê:</strong> GameService recebe seus colaboradores (renderer, rankingService) por parâmetro.
+            </p>
+            <p>
+                <strong>Benefício:</strong> Fica muito fácil trocar as implementações. Para testar, posso passar 
+                versões fake. Para usar em produção, passo as reais.
+            </p>
+        </div>
+
+        <h2>Decisões com as quais NÃO CONCORDO (ou faria diferente)</h2>
+
+        <h3>1. Persistência apenas em JSON</h3>
+        <div class="box box-warning">
+            <p>
+                <strong>Problema:</strong> Se o arquivo JSON ficar corrompido, perde todos os dados.
+            </p>
+            <p>
+                <strong>O que faria:</strong> Usar um banco de dados (SQLite, H2Database) com fallback para JSON.
+            </p>
+            <p>
+                <strong>Impacto:</strong> Para um projeto universitário, JSON funciona. Mas em produção, seria importante.
+            </p>
+        </div>
+
+        <h3>2. GameRenderer só faz System.out.println()</h3>
+        <div class="box box-warning">
+            <p>
+                <strong>Problema:</strong> Se no futuro quisermos uma interface gráfica, fica complicado.
+            </p>
+            <p>
+                <strong>O que faria:</strong> Criar uma interface Renderer com diferentes implementações 
+                (Console, GUI, Web).
+            </p>
+            <p>
+                <strong>Impacto:</strong> Média prioridade. O projeto atual funciona bem assim.
+            </p>
+        </div>
+
+        <h2>O que aprendi</h2>
+        <ul>
+            <li>SOLID não é apenas teoria, na prática torna o código muito mais limpo</li>
+            <li>Separar em camadas (Model, Service, Repository) realmente funciona</li>
+            <li>Interfaces pequenas são melhor que interfaces gigantes</li>
+            <li>Injeção de dependência torna os testes muito mais fáceis</li>
+            <li>Encoding pode quebrar compilação Java (cuidado com BOM!)</li>
+        </ul>
+
+        <h2>Estrutura final</h2>
+        <p>O código ficou organizado assim:</p>
+        <pre>src/solidexercicio10/
+├── Main.java (composição de dependências)
+├── Model (entidades do jogo)
+│   ├── Nave.java
+│   ├── Passageiro.java
+│   ├── Perigo.java
+│   └── ... (mais 5 classes)
+├── service/ (lógica do jogo)
+│   ├── GameService.java
+│   ├── GameRenderer.java
+│   └── RankingService.java
+└── repository/ (persistência)
+    ├── RankingRepository.java (interface)
+    └── JsonRankingRepository.java</pre>
+
+        <h2>Links</h2>
+        <p>
+            <a href="https://github.com/rafaellelavignee-lab/missao-marte-solid-Rafaele" class="link">Ver repositório no GitHub →</a>
+        </p>
+
         <footer>
-            <p>Missão Marte SOLID | Unifor | 2026</p>
+            <p>Missão Marte SOLID | Unifor 2026 | Rafaele Gomes</p>
         </footer>
     </div>
 </body>
