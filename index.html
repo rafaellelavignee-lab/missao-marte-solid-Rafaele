@@ -93,19 +93,19 @@
         table tr:hover {
             background: #0f3460;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .card {
+        .diagram-box {
             background: #0f3460;
             padding: 15px;
             border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .diagram-box img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
             border: 1px solid #00d4ff;
         }
-        .card h4 { color: #00d4ff; margin-bottom: 8px; }
         .link {
             color: #00d4ff;
             text-decoration: none;
@@ -137,13 +137,7 @@
         </div>
 
         <h2>O que é este projeto?</h2>
-        <p>
-            Peguei um jogo em Java que tinha tudo misturado em poucas classes (monolítico) e refatorei usando os princípios SOLID.
-            O código original funcionava bem, mas era meio bagunçado para manutenção.
-        </p>
-        <p>
-            Agora está organizado em 3 camadas bem definidas: Model, Service e Repository.
-        </p>
+        <p>Peguei um jogo em Java que tinha tudo misturado em poucas classes (monolítico) e refatorei usando os princípios SOLID. O código original funcionava bem, mas era meio bagunçado para manutenção. Agora está organizado em 3 camadas bem definidas: Model, Service e Repository.</p>
 
         <h2>Princípios SOLID aplicados</h2>
 
@@ -160,218 +154,143 @@
 
         <h3>Open/Closed (OCP)</h3>
         <div class="box">
-            <p>Posso adicionar novos tipos sem quebrar o código existente:</p>
-            <pre>// Para criar novo passageiro:
-public class Medico extends Passageiro {
-    @Override
-    public int getPontuacao() {
-        return 25;
-    }
-}
-// Pronto! GameService continua funcionando</pre>
+            <p>Posso adicionar novos tipos sem quebrar o código existente.</p>
         </div>
 
         <h3>Liskov Substitution (LSP)</h3>
         <div class="box">
-            <p>Subclasses podem ser usadas no lugar da classe base sem problemas:</p>
-            <ul>
-                <li>Asteroide e Inimigo funcionam igual como Perigo</li>
-                <li>Professor, Engenheiro, Astronauta funcionam igual como Passageiro</li>
-            </ul>
+            <p>Subclasses podem ser usadas no lugar da classe base sem problemas.</p>
         </div>
 
         <h3>Interface Segregation (ISP)</h3>
         <div class="box">
-            <p>Interfaces pequenas e focadas:</p>
-            <pre>Posicionavel (getX, getY)
-Movel extends Posicionavel (mover)
-Perigo extends Posicionavel (colideCom)</pre>
+            <p>Interfaces pequenas e focadas: Posicionavel, Movel, Perigo</p>
         </div>
 
         <h3>Dependency Inversion (DIP)</h3>
         <div class="box">
-            <p>GameService depende de abstrações, não de implementações concretas:</p>
-            <pre>// Injeção de dependência
-GameService(GameRenderer renderer, 
-            RankingService rankingService)</pre>
-            <p>Isso permite trocar a implementação sem alterar GameService.</p>
+            <p>GameService depende de abstrações, não de implementações concretas via injeção de dependência.</p>
         </div>
 
-        <h2>Como compilar e executar</h2>
-        
-        <h3>Código original:</h3>
-        <pre>cd solid-tutorial
-javac -d bin src/exercicio10/*.java
-java -cp bin exercicio10.Main</pre>
+        <h2>Diagramas UML</h2>
 
-        <h3>Código refatorado:</h3>
-        <pre>javac -d bin src/solidexercicio10/*.java src/solidexercicio10/service/*.java src/solidexercicio10/repository/*.java
-java -cp bin solidexercicio10.Main</pre>
+        <h3>Diagrama de Classes</h3>
+        <p>Mostra todas as entidades do projeto e seus relacionamentos:</p>
+        <div class="diagram-box">
+            <img src="docs/uml/diagrama-classes-model.png" alt="Diagrama de Classes" style="max-width: 100%; height: auto;">
+        </div>
 
-        <div class="box box-success">
-            ✓ Ambas as versões compilam e funcionam sem erros
+        <h3>Diagrama de Pacotes</h3>
+        <p>Mostra como o projeto está organizado em camadas:</p>
+        <div class="diagram-box">
+            <img src="docs/uml/diagrama-pacotes.png" alt="Diagrama de Pacotes" style="max-width: 100%; height: auto;">
         </div>
 
         <h2>Testes realizados</h2>
         <table>
-            <tr>
-                <th>Teste</th>
-                <th>Resultado</th>
-            </tr>
-            <tr>
-                <td>Compilação original</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Compilação refatorada</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Iniciar nova missão</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Mover nave (WASD)</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Embarcar passageiros (E)</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Detectar colisões</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Finalizar missão (F)</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Ver ranking</td>
-                <td>✓ OK</td>
-            </tr>
-            <tr>
-                <td>Salvar em JSON</td>
-                <td>✓ OK</td>
-            </tr>
+            <tr><th>Teste</th><th>Resultado</th></tr>
+            <tr><td>Compilação original</td><td>✓ OK</td></tr>
+            <tr><td>Compilação refatorada</td><td>✓ OK</td></tr>
+            <tr><td>Iniciar nova missão</td><td>✓ OK</td></tr>
+            <tr><td>Mover nave (WASD)</td><td>✓ OK</td></tr>
+            <tr><td>Embarcar passageiros (E)</td><td>✓ OK</td></tr>
+            <tr><td>Detectar colisões</td><td>✓ OK</td></tr>
+            <tr><td>Finalizar missão (F)</td><td>✓ OK</td></tr>
+            <tr><td>Ver ranking</td><td>✓ OK</td></tr>
+            <tr><td>Salvar em JSON</td><td>✓ OK</td></tr>
         </table>
 
-        <h2>Dificuldades que enfrentei</h2>
+        <h2>Dificuldades que enfrentei (a luta real!)</h2>
 
-        <h3>1. Encoding BOM no PowerShell</h3>
+        <h3>1. VS Code não achava as classes da pasta service e repository</h3>
         <div class="box box-warning">
-            <p>Quando criava arquivos Java no PowerShell, aparecia o erro:</p>
+            <p>Quando tentava compilar via VS Code terminal, dava erro:</p>
+            <pre>error: class GameService is public, should be declared in a file named GameService.java
+cannot find symbol - class GameRenderer</pre>
+            <p><strong>O problema:</strong> Estrutura de pastas errada. Classes em subpastas mas o classpath não estava configurado.</p>
+            <p><strong>A solução:</strong> Compilar direto com:</p>
+            <pre>javac -d bin src/solidexercicio10/*.java src/solidexercicio10/service/*.java src/solidexercicio10/repository/*.java</pre>
+            <p><strong>Lição:</strong> Quando tem subpastas em Java, tem que referenciar cada uma no javac!</p>
+        </div>
+
+        <h3>2. Arquivo .class antigo causando conflito</h3>
+        <div class="box box-warning">
+            <p>Compilava com sucesso mas na hora de rodar, dava erro de versão:</p>
+            <pre>Exception in thread "main" java.lang.UnsupportedClassVersionError: 
+com/example/Main has been compiled by a more recent version of the Java Runtime</pre>
+            <p><strong>O problema:</strong> Tinha arquivo .class de uma compilação anterior com Java versão diferente.</p>
+            <p><strong>A solução:</strong> Deletar toda a pasta bin e recompilar do zero.</p>
+            <p><strong>Lição:</strong> Sempre limpar os arquivos .class antigos!</p>
+        </div>
+
+        <h3>3. PowerShell adicionando caracteres invisíveis (BOM)</h3>
+        <div class="box box-warning">
+            <p>Quando criava os arquivos .java pelo PowerShell com Out-File, aparecia esse erro na compilação:</p>
             <pre>error: illegal character: '\ufeff'</pre>
-            <p><strong>Solução:</strong> Usar -Encoding ASCII ao invés de UTF8</p>
-            <pre>Out-File -Encoding ASCII  # Correto!</pre>
+            <p><strong>O problema:</strong> PowerShell com UTF8 adiciona um Byte Order Mark (BOM) invisível no início do arquivo. Java não gosta!</p>
+            <p><strong>A solução:</strong> Usar -Encoding ASCII:</p>
+            <pre>Out-File -Encoding ASCII -FilePath "arquivo.java"</pre>
+            <p><strong>Lição:</strong> Encoding é invisível mas quebra tudo. Always use ASCII for Java files!</p>
         </div>
 
-        <h3>2. Arquivos conflitantes</h3>
+        <h3>4. VS Code intellisense não reconhecia as interfaces</h3>
         <div class="box box-warning">
-            <p>Tinha versões antigas das classes causando conflitos na compilação.</p>
-            <p><strong>Solução:</strong> Limpar a pasta solidexercicio10 e recriar do zero.</p>
-        </div>
-
-        <h3>3. PlantUML com caracteres especiais</h3>
-        <div class="box box-warning">
-            <p>Quando colocava caracteres especiais (✓, ❌, etc) no diagrama, queimava no PlantUML online.</p>
-            <p><strong>Solução:</strong> Usar apenas ASCII e deixar o diagrama simples.</p>
+            <p>Eu tinha criado a interface Posicionavel mas o VS Code falava "cannot resolve symbol".</p>
+            <p><strong>O problema:</strong> VS Code não tinha reconhecido a pasta src como source folder.</p>
+            <p><strong>A solução:</strong> 
+            <ul>
+                <li>Abrir a pasta do projeto direto no VS Code (não subpastas)</li>
+                <li>Deixar ele indexar tudo (esperar uns segundos)</li>
+                <li>Se não funcionar: Ctrl+Shift+P → "Java: Clean Language Server Workspace"</li>
+            </ul>
+            </p>
+            <p><strong>Lição:</strong> VS Code precisa da raiz do projeto, não subpastas!</p>
         </div>
 
         <h2>Decisões com as quais CONCORDO</h2>
 
         <h3>1. Separação em 3 camadas (Model, Service, Repository)</h3>
         <div class="box box-success">
-            <p>
-                <strong>Por quê:</strong> Deixa o código muito mais organizado. Cada parte tem um propósito claro.
-            </p>
-            <p>
-                <strong>Benefício:</strong> Quando preciso alterar como os dados são salvos (de JSON para banco de dados), 
-                só mexo na camada Repository. O resto do código não precisa mudar!
-            </p>
+            <p><strong>Benefício:</strong> Deixa o código muito mais organizado. Quando preciso alterar como os dados são salvos, só mexo na camada Repository!</p>
         </div>
 
         <h3>2. Usar interfaces para abstrair comportamentos</h3>
         <div class="box box-success">
-            <p>
-                <strong>Por quê:</strong> Ao invés de trabalhar com classes específicas, trabalho com interfaces.
-            </p>
-            <p>
-                <strong>Benefício:</strong> Posso adicionar novos tipos (novo passageiro, novo perigo) sem mexer no GameService.
-                O código fica aberto para extensão, fechado para modificação.
-            </p>
+            <p><strong>Benefício:</strong> Posso adicionar novos tipos sem mexer no GameService.</p>
         </div>
 
         <h3>3. Injeção de dependência</h3>
         <div class="box box-success">
-            <p>
-                <strong>Por quê:</strong> GameService recebe seus colaboradores (renderer, rankingService) por parâmetro.
-            </p>
-            <p>
-                <strong>Benefício:</strong> Fica muito fácil trocar as implementações. Para testar, posso passar 
-                versões fake. Para usar em produção, passo as reais.
-            </p>
+            <p><strong>Benefício:</strong> Fica fácil trocar as implementações para testes ou produção.</p>
         </div>
 
-        <h2>Decisões com as quais NÃO CONCORDO (ou faria diferente)</h2>
+        <h2>Decisões com as quais NÃO CONCORDO</h2>
 
         <h3>1. Persistência apenas em JSON</h3>
         <div class="box box-warning">
-            <p>
-                <strong>Problema:</strong> Se o arquivo JSON ficar corrompido, perde todos os dados.
-            </p>
-            <p>
-                <strong>O que faria:</strong> Usar um banco de dados (SQLite, H2Database) com fallback para JSON.
-            </p>
-            <p>
-                <strong>Impacto:</strong> Para um projeto universitário, JSON funciona. Mas em produção, seria importante.
-            </p>
+            <p><strong>Problema:</strong> Se o arquivo JSON ficar corrompido, perde todos os dados.</p>
+            <p><strong>O que faria:</strong> Usar um banco de dados (SQLite, H2Database).</p>
         </div>
 
         <h3>2. GameRenderer só faz System.out.println()</h3>
         <div class="box box-warning">
-            <p>
-                <strong>Problema:</strong> Se no futuro quisermos uma interface gráfica, fica complicado.
-            </p>
-            <p>
-                <strong>O que faria:</strong> Criar uma interface Renderer com diferentes implementações 
-                (Console, GUI, Web).
-            </p>
-            <p>
-                <strong>Impacto:</strong> Média prioridade. O projeto atual funciona bem assim.
-            </p>
+            <p><strong>Problema:</strong> Se quisermos interface gráfica, fica complicado.</p>
+            <p><strong>O que faria:</strong> Criar interface Renderer com diferentes implementações.</p>
         </div>
 
         <h2>O que aprendi</h2>
         <ul>
             <li>SOLID não é apenas teoria, na prática torna o código muito mais limpo</li>
-            <li>Separar em camadas (Model, Service, Repository) realmente funciona</li>
+            <li>Separar em camadas realmente funciona</li>
             <li>Interfaces pequenas são melhor que interfaces gigantes</li>
-            <li>Injeção de dependência torna os testes muito mais fáceis</li>
-            <li>Encoding pode quebrar compilação Java (cuidado com BOM!)</li>
+            <li>Injeção de dependência torna os testes mais fáceis</li>
+            <li>Encoding invisível no PowerShell pode quebrar TUDO</li>
+            <li>VS Code precisa da raiz do projeto para indexar corretamente</li>
+            <li>Sempre limpar arquivos .class antes de recompilar</li>
         </ul>
 
-        <h2>Estrutura final</h2>
-        <p>O código ficou organizado assim:</p>
-        <pre>src/solidexercicio10/
-├── Main.java (composição de dependências)
-├── Model (entidades do jogo)
-│   ├── Nave.java
-│   ├── Passageiro.java
-│   ├── Perigo.java
-│   └── ... (mais 5 classes)
-├── service/ (lógica do jogo)
-│   ├── GameService.java
-│   ├── GameRenderer.java
-│   └── RankingService.java
-└── repository/ (persistência)
-    ├── RankingRepository.java (interface)
-    └── JsonRankingRepository.java</pre>
-
         <h2>Links</h2>
-        <p>
-            <a href="https://github.com/rafaellelavignee-lab/missao-marte-solid-Rafaele" class="link">Ver repositório no GitHub →</a>
-        </p>
+        <p><a href="https://github.com/rafaellelavignee-lab/missao-marte-solid-Rafaele" class="link">Ver repositório no GitHub →</a></p>
 
         <footer>
             <p>Missão Marte SOLID | Unifor 2026 | Rafaele Gomes</p>
