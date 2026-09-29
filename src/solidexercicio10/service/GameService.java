@@ -1,5 +1,7 @@
 package solidexercicio10.service;
-import solidexercicio10.*;
+import solidexercicio10.model.*;
+import solidexercicio10.presentation.GameRenderer;
+import solidexercicio10.repository.RankingEntry;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

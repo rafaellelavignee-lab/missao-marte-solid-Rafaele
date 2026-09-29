@@ -1,5 +1,5 @@
-package solidexercicio10.service;
-import solidexercicio10.*;
+package solidexercicio10.presentation;
+import solidexercicio10.model.*;
 import java.util.List;
 public class GameRenderer {
     public void desenharMapa(Missao missao, int minX, int maxX, int minY, int maxY, int score, String pilotoNome) {

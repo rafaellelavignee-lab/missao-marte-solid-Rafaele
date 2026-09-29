@@ -1,4 +1,4 @@
-package solidexercicio10;
+package solidexercicio10.model;
 import java.util.Random;
 public interface Movel extends Posicionavel {
     void mover(Random random, int minX, int maxX, int minY, int maxY);

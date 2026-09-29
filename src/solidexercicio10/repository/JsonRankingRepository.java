@@ -1,5 +1,5 @@
 package solidexercicio10.repository;
-import solidexercicio10.*;
+import solidexercicio10.model.Dificuldade;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

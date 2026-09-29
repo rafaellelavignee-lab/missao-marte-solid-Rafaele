@@ -1,4 +1,4 @@
-package solidexercicio10;
+package solidexercicio10.model;
 public class Asteroide implements Perigo {
     private final int x;
     private final int y;

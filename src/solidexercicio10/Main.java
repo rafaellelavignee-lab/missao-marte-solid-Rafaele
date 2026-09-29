@@ -1,6 +1,7 @@
 package solidexercicio10;
+import solidexercicio10.model.Dificuldade;
 import solidexercicio10.service.GameService;
-import solidexercicio10.service.GameRenderer;
+import solidexercicio10.presentation.GameRenderer;
 import solidexercicio10.service.RankingService;
 import solidexercicio10.repository.RankingRepository;
 import solidexercicio10.repository.JsonRankingRepository;
@@ -59,7 +60,7 @@ public class Main {
         if (pilotoNome.isEmpty()) pilotoNome = "Piloto Anonimo";
         Dificuldade dificuldade = lerDificuldade(scanner);
         int tamanhoMapa = lerTamanhoMapa(scanner);
-        gameService.jogarPartida(new Scanner(System.in), new Random(), pilotoNome, dificuldade, tamanhoMapa);
+        gameService.jogarPartida(scanner, new Random(), pilotoNome, dificuldade, tamanhoMapa);
     }
     private static Dificuldade lerDificuldade(Scanner scanner) {
         System.out.print("Escolha a Dificuldade (facil/medio/dificil): ");

@@ -1,4 +1,5 @@
-package solidexercicio10;
+package solidexercicio10.repository;
+import solidexercicio10.model.Dificuldade;
 public class RankingEntry {
     public final String name;
     public final int score;

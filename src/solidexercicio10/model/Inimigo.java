@@ -1,4 +1,4 @@
-package solidexercicio10;
+package solidexercicio10.model;
 import java.util.Random;
 public class Inimigo implements Perigo, Movel {
     private int x;

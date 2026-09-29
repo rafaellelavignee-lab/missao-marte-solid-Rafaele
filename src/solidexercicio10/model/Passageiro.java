@@ -1,4 +1,4 @@
-package solidexercicio10;
+package solidexercicio10.model;
 public class Passageiro implements Posicionavel {
     private final String nome;
     private final String tipo;

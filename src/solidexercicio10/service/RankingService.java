@@ -1,5 +1,5 @@
 package solidexercicio10.service;
-import solidexercicio10.*;
+import solidexercicio10.repository.RankingEntry;
 import solidexercicio10.repository.RankingRepository;
 import java.util.Comparator;
 import java.util.List;

@@ -10,12 +10,16 @@
 
 Registre os comandos executados e os fluxos testados:
 
-- [x] Compilação do código inicial: `javac -d bin src/exercicio10/*.java`
-- [x] Compilação da versão refatorada: `javac -d bin src/solidexercicio10/*.java src/solidexercicio10/service/*.java src/solidexercicio10/repository/*.java`
-- [x] Início de uma missão: Menu principal → "Iniciar nova missão" → Seleção de dificuldade (MEDIO)
-- [x] Movimentação, embarque e conclusão da missão: WASD para mover nave, E para embarcar passageiros, F para finalizar
-- [x] Consulta e reset do ranking: Menu → "Ver ranking" → "Limpar ranking"
-- [x] Outro teste: Salvar/carregar ranking em JSON (arquivo ranking.json gerado com sucesso)
+- [x] Compilação do código inicial: `javac -d bin src/exercicio10/*.java` e execução com `java -cp bin Main`
+- [x] Compilação da versão refatorada: `javac -d bin $(find src/solidexercicio10 -name "*.java")` e execução com `java -cp bin solidexercicio10.Main`
+- [x] Início de uma missão: Menu principal → "Iniciar Nova Missao" → nome do piloto, dificuldade e tamanho do mapa
+- [x] Movimentação, embarque e encerramento: `w/s/a/d` para mover a nave, `c` para embarcar passageiro na posição atual, `q` para abortar a missão
+- [x] Consulta e reset do ranking: Menu → "Visualizar Ranking Top 5" → "Resetar Historico de Ranking"
+- [x] Persistência: ranking salvo/lido em `ranking.json` na raiz do projeto
+
+### Correção pós-entrega (29/09/2026)
+
+Ao testar novamente a versão entregue, o jogo travava/quebrava logo após escolher a dificuldade, com `NoSuchElementException` no `Scanner`. Causa raiz: `Main` criava **dois objetos `Scanner` sobre o mesmo `System.in`** — um no `main()` (usado para o menu) e outro (`new Scanner(System.in)`) dentro de `jogarPartida`, passado ao `GameService`. Como `Scanner` faz buffering interno do fluxo, o segundo `Scanner` não enxergava mais nada disponível para ler. Corrigido reaproveitando o `Scanner` único do `main()` em toda a sessão. Também foi corrigida a estrutura de pastas: os arquivos da versão refatorada declaravam `package solidexercicio10...` mas estavam fisicamente soltos em `src/`, fora de uma pasta `src/solidexercicio10/` — o que impedia a compilação pelo comando documentado. Ambos os problemas explicam por que "o jogo não rodou" após a entrega.
 
 ---
 
